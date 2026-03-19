@@ -1,182 +1,148 @@
-/* body */
+/* --- 1. Variabelen & Basis --- */
+:root {
+    --primary-blue: #0071e3;
+    --dark-blue: #0056ba;
+    --light-bg: #fbfbfd;
+    --white: #ffffff;
+    --text-dark: #1d1d1f;
+    --text-gray: #86868b;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    background: #fdfdfd;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-    color: #111;
+    margin: 0; padding: 0;
+    background-color: var(--light-bg);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
 }
 
-/* modern header */
-.modern-header {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* --- 2. Header & Search --- */
+.main-header {
+    background-color: var(--white);
+    border-bottom: 1px solid #d2d2d7;
+    position: sticky; top: 0; z-index: 1000;
 }
 
-/* header top - search */
-.header-top {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.75rem;
+.header-content {
+    display: flex; justify-content: space-between;
+    align-items: center; padding: 10px 0;
 }
+
+.header-logo-img { max-height: 50px; width: auto; }
+
+.main-nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+.main-nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.3s; }
+
+.header-actions { display: flex; align-items: center; gap: 15px; }
+
+.search-container { position: relative; }
 
 .search-input {
-    width: 300px;
-    max-width: 90%;
-    padding: 0.5rem 1rem;
+    padding: 8px 40px 8px 15px;
     border-radius: 20px;
-    border: 1px solid #e5e5e7;
-    background: #f5f5f7;
-    transition: all 0.3s ease;
+    border: 1px solid #d2d2d7; 
+    background: #f5f5f7; 
+    width: 180px;
+    transition: width 0.3s ease;
 }
 
-.search-input:hover {
-    background: #e8e8ed;
-    transform: scale(1.05);
+.search-input:focus {
+    width: 220px;
+    outline: none;
+    border-color: var(--primary-blue);
 }
 
-/* header title */
-h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, #000000 0%, #333333 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.search-btn { 
+    position: absolute; 
+    right: 12px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background: none; 
+    border: none; 
+    color: var(--text-gray); 
+    cursor: pointer; 
+    padding: 0;
 }
 
-/* custom text */
-p1 {
-    display: block;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-align: center;
-    color: #333;
+/* --- 3. Neon Animatie --- */
+.neon-light { animation: neon-blink 4s ease-in-out forwards; }
+
+@keyframes neon-blink {
+    0%, 15%, 30% { color: var(--white); text-shadow: 0 0 10px var(--primary-blue), 0 0 20px var(--primary-blue); }
+    5%, 20%, 35% { color: var(--primary-blue); text-shadow: none; }
+    40%, 90% { color: var(--white); text-shadow: 0 0 10px var(--primary-blue), 0 0 30px var(--primary-blue); }
+    100% { color: var(--primary-blue); text-shadow: none; }
 }
 
-/* waarschuwing animatie voor Lenen kost geld */
-.warning-text {
-    color: #d32f2f; /* rood alert */
-    animation: warningPulse 2s ease-in-out; /* 2 seconden animatie */
-}
+/* --- 4. Informatie & Knoppen --- */
+.informatie { text-align: center; padding: 50px 0; }
+.main-title { font-size: 3.5rem; font-weight: 800; color: var(--primary-blue); }
+.warning-text { color: #d32f2f; display: block; margin-top: 10px; }
 
-@keyframes warningPulse {
-    0% { transform: scale(1); color: #d32f2f; }
-    25% { transform: scale(1.1); color: #ff5252; }
-    50% { transform: scale(1); color: #d32f2f; }
-    75% { transform: scale(1.1); color: #ff5252; }
-    100% { transform: scale(1); color: #d32f2f; }
-}
+.buttons-container-centered { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 30px; }
+.btn-primary { background: var(--primary-blue); color: white; border-radius: 25px; padding: 12px 25px; border: none; font-weight: 600; cursor: pointer; }
+.btn-secondary { background: white; color: var(--primary-blue); border: 1px solid var(--primary-blue); border-radius: 25px; padding: 12px 25px; font-weight: 600; cursor: pointer; }
 
-p2 {
-    display: block;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    text-align: center;
-    color: #555;
-}
-
-p3 {
-    display: block;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    color: #333;
-}
-
-/* buttons container */
-.buttons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-/* alle buttons */
-button {
-    padding: 0.9rem 2rem;
-    border-radius: 12px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    transform-origin: center;
-    border: none;
-}
-
-/* Bestel nu button */
-.btn-bestel {
-    background: linear-gradient(135deg, #0071e3 0%, #0056ba 100%);
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0,113,227,0.25);
-}
-
-.btn-bestel:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 16px rgba(0,113,227,0.25);
-}
-
-/* Bekijk alle producten button */
-.btn-bekijk {
-    background: #f5f5f7;
-    color: #0071e3;
-    border: 1px solid #e5e5e7;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.btn-bekijk:hover {
-    transform: scale(1.08);
-    background: #e8e8ed;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-}
-
-/* aantal bestellingen moderne cirkel */
 .btn-aantal {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0071e3 0%, #0056ba 100%);
-    color: #fff;
-    font-size: 0.6rem;
-    font-weight: 700;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #1d1d1f; color: white;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+.btn-aantal .number { font-size: 0.8rem; font-weight: 800; }
+.btn-aantal .label { font-size: 0.5rem; text-transform: uppercase; }
+
+/* --- 5. Filter Systeem --- */
+.filter-buttons {
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,113,227,0.25), 0 0 10px rgba(0,113,227,0.15);
-    border: 2px solid rgba(255,255,255,0.3);
-    transition: all 0.3s ease, box-shadow 0.3s ease;
+    gap: 15px;
+    margin: 20px 0 40px 0;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    border: 2px solid var(--primary-blue);
+    background: transparent;
+    color: var(--primary-blue);
+    border-radius: 30px;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.btn-aantal:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 16px rgba(0,113,227,0.35), 0 0 15px rgba(0,113,227,0.2);
+.filter-btn.active, .filter-btn:hover {
+    background: var(--primary-blue);
+    color: white;
 }
 
-/* informatie section */
-.informatie {
-    background: #fdfdfd;
-    padding: 4rem 2rem;
-    border-top: 1px solid #e5e5e7;
-    border-bottom: 1px solid #e5e5e7;
-    font-size: 1.1rem;
+/* --- 6. Product Grid --- */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px 0; }
+
+.product-card { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 20px; 
+    text-align: center; 
+    transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s; 
+    border: 1px solid #eee; 
+}
+
+.product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.img-container { width: 100%; height: 200px; border-radius: 15px; overflow: hidden; margin-bottom: 15px; }
+.product-img { width: 100%; height: 100%; object-fit: cover; }
+.price { color: var(--primary-blue); font-weight: 700; font-size: 1.2rem; }
+
+/* --- 7. Cart & Footer --- */
+.cart-icon { position: relative; color: var(--text-dark); font-size: 1.2rem; text-decoration: none; }
+.cart-count { position: absolute; top: -10px; right: -10px; background: var(--primary-blue); color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; }
+
+.main-footer { 
+    text-align: center; 
+    padding: 40px 20px; 
+    color: var(--text-gray); 
+    font-size: 0.8rem;
+    border-top: 1px solid #d2d2d7;
+    margin-top: 50px;
 }

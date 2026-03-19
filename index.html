@@ -1,68 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webshop</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-    <!-- Link to CSS -->
+    <title>Blue School | Study Essentials</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <!-- ✅ Script wordt onderaan geladen voor de zekerheid -->
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-<header class="modern-header">
-    <div class="header-top">
-        <input type="search" class="search-input" placeholder="Search products..." id="searchBox">
+<header class="main-header">
+    <div class="header-content container">
+        <div class="logo">
+            <img src="image_4.png" alt="Blue School" class="header-logo-img"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-fallback" style="display:none; color:#0071e3; font-weight:800;">
+                BLUE SCHOOL
+            </span>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">Klantenservice</a></li>
+                <li><a href="#">Inspiratie</a></li>
+                <li><a href="#">Tickets en deals</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Zoek producten..." id="mainSearch">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <a href="#" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
     </div>
-    <h1>School/Study Essentials</h1>
 </header>
 
-<div class="informatie">
-    <p3>Wat hebben wij in de shop</p3>
-    <p2>Schoolspullen vind je op onze website: notebooks, pennen, laptop sleeves en meer!</p2>
-    <p1 class="warning-text">Lenen kost geld!</p1>
+<main class="container">
+    <div class="informatie">
+        <h1 class="main-title neon-light">Study Essentials</h1>
+        <p class="subtitle">Alles wat je nodig hebt voor je middelbare school of college tijd.</p>
+        <strong class="warning-text">Lenen kost geld!</strong>
 
-    <div class="buttons-container">
-        <button class="btn-bestel"> Bestel nu </button>
-        <button class="btn-bekijk"> Bekijk alle producten </button>
-        <button class="btn-aantal"> Aantal bestellingen </button>
+        <div class="buttons-container-centered">
+            <button class="btn-primary">Bestel nu</button>
+            <button class="btn-secondary">Bekijk alle producten</button>
+            <div class="btn-aantal">
+                <span class="number">12+</span>
+                <span class="label">Besteld</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Video container -->
-    <div id="video-container" style="text-align:center; margin-top: 2rem;"></div>
-</div>
+    <!-- ✅ BIJGEWERKTE FILTER KNOPPEN -->
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Alles</button>
+        <button class="filter-btn" data-filter="premium notebook">Notebook</button>
+        <button class="filter-btn" data-filter="design pen set">Pen Set</button>
+        <button class="filter-btn" data-filter="compact powerbank">Powerbank</button>
+        <button class="filter-btn" data-filter="pastel highlighters">Highlighters</button>
+        <button class="filter-btn" data-filter="minimalist backpack">Backpack</button>
+        <button class="filter-btn" data-filter="tassen">Alle Tassen</button>
+    </div>
 
-<!-- JavaScript voor video en2 header shrink -->
+    <section class="product-grid" id="productGrid">
+        <div class="product-card" data-category="schrijven">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&q=80&w=400" class="product-img">
+            </div>
+            <h4>Premium Notebook</h4>
+            <p>A5 - Hardcover - 120gr papier</p>
+            <span class="price">€12,50</span>
+        </div>
+
+        <div class="product-card" data-category="tassen">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&q=80&w=400" class="product-img">
+            </div>
+            <h4>Laptop Sleeve</h4>
+            <p>Waterafstotend - 13/14 inch</p>
+            <span class="price">€24,95</span>
+        </div>
+
+        <div class="product-card" data-category="schrijven">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&q=80&w=400" class="product-img">
+            </div>
+            <h4>Design Pen Set</h4>
+            <p>Zwarte gel-inkt - 3 stuks</p>
+            <span class="price">€8,00</span>
+        </div>
+
+        <div class="product-card" data-category="elektronica">
+            <div class="img-container">
+                <img src="https://image.coolblue.nl/max/788xauto/content/f8541b463974b62f3342ef4f557fd17d" class="product-img">
+            </div>
+            <h4>Compact Powerbank</h4>
+            <p>10.000 mAh - Snelladen</p>
+            <span class="price">€29,99</span>
+        </div>
+
+        <div class="product-card" data-category="schrijven">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&q=80&w=400" class="product-img">
+            </div>
+            <h4>Pastel Highlighters</h4>
+            <p>Set van 6 zachte kleuren</p>
+            <span class="price">€6,50</span>
+        </div>
+
+        <div class="product-card" data-category="tassen">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=400" class="product-img">
+            </div>
+            <h4>Minimalist Backpack</h4>
+            <p>Inclusief 16" laptopvak</p>
+            <span class="price">€45,00</span>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <p>&copy; 2026 Blue School Essentials</p>
+    </div>
+</footer>
+
+<!-- ✅ JAVASCRIPT LOGICA -->
 <script>
-const header = document.querySelector("header");
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.product-card');
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        header.classList.add("shrink");
-    } else {
-        header.classList.remove("shrink");
-    }
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            const filter = this.dataset.filter.toLowerCase();
+            
+            // Active knop styling
+            buttons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            cards.forEach(card => {
+                const category = card.dataset.category.toLowerCase();
+                const title = card.querySelector('h4').textContent.toLowerCase();
+
+                // Checkt of het filter overeenkomt met categorie OF met de tekst in de titel
+                if (filter === 'all' || category === filter || title.includes(filter)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
 });
-
-const searchBox = document.getElementById('searchBox');
-const videoContainer = document.getElementById('video-container');
-
-searchBox.addEventListener('input', function() {
-    const query = searchBox.value.toLowerCase().trim();
-
-    // Video verschijnt alleen als je "epstein" typt
-    if(query === "epstein") {
-        videoContainer.innerHTML = `
-            <iframe width="560" height="315" 
-            src="https://www.youtube.com/embed/iDR41AQKH1c?autoplay=1&mute=1" 
-            title="YouTube video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        `;
-    } else {
-        videoContainer.innerHTML = ''; // video verdwijnt als zoekterm anders is
-    }
-})
 </script>
+
 </body>
 </html>
-

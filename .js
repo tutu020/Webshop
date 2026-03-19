@@ -1,27 +1,31 @@
-const header = document.querySelector("header");
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("Filter system active ✅");
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        header.classList.add("shrink");
-    } else {
-        header.classList.remove("shrink");
-    }
-});
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.product-card');
 
-const searchBox = document.getElementById('searchBox');
-const videoContainer = document.getElementById('video-container');
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            const filter = this.dataset.filter.toLowerCase();
+            
+            // Active class bijwerken voor de knoppen
+            buttons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
 
-searchBox.addEventListener('input', function() {
-    const query = searchBox.value.toLowerCase().trim();
+            cards.forEach(card => {
+                // We pakken de categorie én de tekst van de titel (h4)
+                const category = card.dataset.category.toLowerCase();
+                const productName = card.querySelector('h4').textContent.toLowerCase();
 
-    // Video verschijnt alleen als je "epstein" typt
-    if(query === "epstein") {
-        videoContainer.innerHTML = `
-            <iframe width="560" height="315" 
-            src="https://www.youtube.com/embed/iDR41AQKH1c?autoplay=1&mute=1" 
-            title="YouTube video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        `;
-    } else {
-        videoContainer.innerHTML = ''; // video verdwijnt als zoekterm anders is
-    }
+                // Check of de filter 'all' is, OF de categorie matcht, OF de productnaam de filter bevat
+                if (filter === 'all' || 
+                    category === filter || 
+                    productName.includes(filter)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
 });
